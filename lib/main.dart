@@ -55,72 +55,94 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        
+
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
 
         leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu), // Icône du menu burger
-                onPressed: () {
-                  Scaffold.of(context).openDrawer(); // Action à effectuer lorsque le bouton du menu est pressé
-                },
-              );
-            },
-          ),
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu), // Icône du menu burger
+              onPressed: () {
+                Scaffold.of(context)
+                    .openDrawer(); // Action à effectuer lorsque le bouton du menu est pressé
+              },
+            );
+          },
+        ),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 250, 240, 242),
               ),
-              child: const Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/rocket.png', // Chemin de ton image PNG
+                    width: 40, // Largeur de l'image
+                    height: 40, // Hauteur de l'image
+                    color: Colors.pink,
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Mars Rovers',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 26,
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
-              title: const Text('Option 1'),
+              title: const Text(
+                'Spirit',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.black,
+                ),
+              ),
               onTap: () {
                 // Action à effectuer lorsque l'option 1 est sélectionnée
               },
             ),
             ListTile(
-              title: const Text('Option 2'),
+              title: const Text(
+                'Opportunity',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.black,
+                ),
+              ),
               onTap: () {
                 // Action à effectuer lorsque l'option 2 est sélectionnée
               },
             ),
-            // Ajoute d'autres options du menu ici
+            ListTile(
+              title: const Text(
+                'Curiosity',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {
+                // Action à effectuer lorsque l'option 2 est sélectionnée
+              },
+            ),
           ],
         ),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
