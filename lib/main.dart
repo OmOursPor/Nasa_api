@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/screens/Home.dart';
+import 'package:flutter_project/screens/home.dart';
 import 'package:flutter_project/widgets/burger_menu.dart';
 
 void main() {
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
@@ -31,6 +32,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  int currentIndex = 0; // Index Par defaut du drawer
+  Map<String, dynamic>? _data;
+
+  void updateIndex(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  void onDataReceived(int index, Map<String, dynamic> data){
+    setState(() {
+      _data = data;
+      currentIndex = index;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -62,8 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-      drawer: const BurgerMenu(),
-      body: const Home(),
+      drawer: BurgerMenu(
+        currentIndex: currentIndex,
+        onDataReceived: onDataReceived, onTap: (int ) {  },
+      ),
+      body: Home(currentIndex: currentIndex, data: _data),
     );
   }
 }
